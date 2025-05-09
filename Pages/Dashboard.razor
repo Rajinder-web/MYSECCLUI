@@ -1,0 +1,79 @@
+﻿@page "/dashboard"
+@inject IPortfolioClientService PortfolioService
+@inject ILogger<Dashboard> Logger
+
+<PageTitle>Portfolio Dashboard</PageTitle>
+
+<h1>Portfolio Dashboard</h1>
+
+@if (isLoading)
+{
+    <p><em>Loading portfolio data...</em></p>
+}
+else if (portfolioData != null)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Aggregated Summary (Updated: @portfolioData.LastUpdated.ToLocalTime().ToString("g"))
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Total Combined Value: @portfolioData.TotalCombinedValue.ToString("C")</h5>
+            
+            @if (portfolioData.ValueByAccountType.Any())
+            {
+                <h6>Value by Account Type:</h6>
+                <ul>
+                    @foreach (var kvp in portfolioData.ValueByAccountType)
+                    {
+                        <li>@kvp.Key: @kvp.Value.ToString("C")</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No breakdown by account type available.</p>
+            }
+
+            @if (portfolioData.FetchedPortfolioIds.Any())
+            {
+                <h6>Data fetched for portfolios:</h6>
+                <ul>
+                    @foreach (var id in portfolioData.FetchedPortfolioIds)
+                    {
+                        <li>@id</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-danger"><em>Could not load portfolio data. Please check the console for errors or try again later.</em></p>
+}
+
+@code {
+    private AggregatedPortfolioViewModel? portfolioData;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Logger.LogInformation("Dashboard initializing. Fetching data...");
+        try
+        {
+            portfolioData = await PortfolioService.GetAggregatedPortfolioSummaryAsync();
+            if (portfolioData == null)
+            {
+                Logger.LogWarning("Portfolio data received from service is null.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error fetching portfolio data in Dashboard.");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
