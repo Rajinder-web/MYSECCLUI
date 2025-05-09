@@ -4,5 +4,6 @@
 
 /.vs
 /obj
-/BlazorApp.csproj
-/BlazorApp.csproj.user
+/MYSECCLUI.csproj
+/MYSECCLUI.csproj.user
+/bin/Debug/net8.0
