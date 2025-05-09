@@ -1,6 +1,6 @@
-﻿using BlazorApp.Model;
+﻿using MYSECCLUI.Model;
 
-namespace BlazorApp.Services
+namespace MYSECCLUI.Services
 {
     public interface IPortfolioClientService
     {

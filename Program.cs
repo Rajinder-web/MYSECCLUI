@@ -1,5 +1,5 @@
-using BlazorApp;
-using BlazorApp.Services;
+using MYSECCLUI;
+using MYSECCLUI.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

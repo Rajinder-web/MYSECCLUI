@@ -1,8 +1,8 @@
-﻿using BlazorApp.Model;
-using BlazorApp.Services;
+﻿using MYSECCLUI.Model;
+using MYSECCLUI.Services;
 using System.Net.Http.Json;
 
-namespace BlazorApp.Services
+namespace MYSECCLUI.Services
 {
     public class PortfolioClientService: IPortfolioClientService
     {

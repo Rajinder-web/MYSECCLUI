@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MYSECCLUI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:44632;http://localhost:44633"
+    }
+  }
+}

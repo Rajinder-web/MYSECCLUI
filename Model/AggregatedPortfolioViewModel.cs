@@ -1,4 +1,4 @@
-﻿namespace BlazorApp.Model
+﻿namespace MYSECCLUI.Model
 {
     public class AggregatedPortfolioViewModel
     {
