@@ -2,9 +2,10 @@
 {
     public class AggregatedPortfolioViewModel
     {
-        public decimal TotalCombinedValue { get; set; }
-        public Dictionary<string, decimal> ValueByAccountType { get; set; } = new Dictionary<string, decimal>();
+        public string AccountType { get; set; } = string.Empty;
+        public double PortfolioAllAccountsTotal { get; set; }
+        public int TotalAccounts { get; set; }
+        public decimal PortfolioTotalValue { get; set; }
         public List<string> FetchedPortfolioIds { get; set; } = new List<string>();
-        public DateTime LastUpdated { get; set; }
     }
 }

@@ -14,26 +14,15 @@ else if (portfolioData != null)
 {
     <div class="card mb-3">
         <div class="card-header">
-            Aggregated Summary (Updated: @portfolioData.LastUpdated.ToLocalTime().ToString("g"))
+            Aggregated Summary  
         </div>
         <div class="card-body">
-            <h5 class="card-title">Total Combined Value: @portfolioData.TotalCombinedValue.ToString("C")</h5>
+            <h5 class="card-title">Account Type:@portfolioData.AccountType </h5>
+            <h5 class="card-title">Total Accounts:@portfolioData.TotalAccounts </h5>
+            <h5 class="card-title">Total Combined Value: @portfolioData.PortfolioTotalValue.ToString("C")</h5>
+            <h5 class="card-title">Accounts Total Value: @portfolioData.PortfolioAllAccountsTotal.ToString("C")</h5>
+                      
             
-            @if (portfolioData.ValueByAccountType.Any())
-            {
-                <h6>Value by Account Type:</h6>
-                <ul>
-                    @foreach (var kvp in portfolioData.ValueByAccountType)
-                    {
-                        <li>@kvp.Key: @kvp.Value.ToString("C")</li>
-                    }
-                </ul>
-            }
-            else
-            {
-                <p>No breakdown by account type available.</p>
-            }
-
             @if (portfolioData.FetchedPortfolioIds.Any())
             {
                 <h6>Data fetched for portfolios:</h6>
